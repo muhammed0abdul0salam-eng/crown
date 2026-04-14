@@ -1,0 +1,295 @@
+/* ================================================
+   CROWNSTONE SECURITY - Admin Theme
+   Common design tokens, resets & base styles
+   for the admin dashboard & login pages
+   ================================================ */
+
+/* ---- CSS Custom Properties ---- */
+:root {
+    /* Colors */
+    --bg-primary: #0a0e1a;
+    --bg-secondary: #0f1424;
+    --bg-tertiary: #141a2e;
+    --bg-card: rgba(15, 20, 36, 0.8);
+    --bg-card-hover: rgba(20, 26, 46, 0.95);
+    --bg-glass: rgba(10, 14, 26, 0.7);
+
+    --text-primary: #e8eaf6;
+    --text-secondary: #9ea4b8;
+    --text-muted: #6b7280;
+
+    --accent-cyan: #00d4ff;
+    --accent-purple: #7b2ff7;
+    --accent-blue: #3b82f6;
+    --accent-green: #00ff88;
+    --accent-red: #ff4757;
+
+    --gradient-primary: linear-gradient(135deg, #00d4ff 0%, #7b2ff7 100%);
+    --gradient-subtle: linear-gradient(135deg, rgba(0,212,255,0.1), rgba(123,47,247,0.1));
+    --gradient-card: linear-gradient(135deg, rgba(0,212,255,0.05), rgba(123,47,247,0.05));
+
+    --border-color: rgba(0, 212, 255, 0.12);
+    --border-hover: rgba(0, 212, 255, 0.3);
+
+    --shadow-sm: 0 2px 8px rgba(0,0,0,0.3);
+    --shadow-md: 0 4px 20px rgba(0,0,0,0.4);
+    --shadow-lg: 0 8px 40px rgba(0,0,0,0.5);
+    --shadow-glow: 0 0 20px rgba(0, 212, 255, 0.15);
+    --shadow-glow-strong: 0 0 40px rgba(0, 212, 255, 0.25);
+
+    /* Spacing */
+    --container-max: 1200px;
+
+    /* Transitions */
+    --transition-fast: 0.2s ease;
+    --transition-normal: 0.3s ease;
+    --transition-slow: 0.5s ease;
+
+    /* Border Radius */
+    --radius-sm: 8px;
+    --radius-md: 12px;
+    --radius-lg: 16px;
+    --radius-xl: 24px;
+}
+
+/* ---- Reset & Base ---- */
+*,
+*::before,
+*::after {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+html {
+    scroll-behavior: smooth;
+}
+
+body {
+    font-family: 'Inter', -apple-system, BlinkMacSystemFont, sans-serif;
+    background: var(--bg-primary);
+    color: var(--text-primary);
+    line-height: 1.7;
+    overflow-x: hidden;
+    -webkit-font-smoothing: antialiased;
+    -moz-osx-font-smoothing: grayscale;
+}
+
+::selection {
+    background: rgba(0, 212, 255, 0.3);
+    color: #fff;
+}
+
+a {
+    text-decoration: none;
+    color: inherit;
+    transition: color var(--transition-fast);
+}
+
+img {
+    max-width: 100%;
+    display: block;
+}
+
+ul {
+    list-style: none;
+}
+
+/* ---- Scrollbar ---- */
+::-webkit-scrollbar {
+    width: 6px;
+    height: 6px;
+}
+
+::-webkit-scrollbar-track {
+    background: var(--bg-primary);
+}
+
+::-webkit-scrollbar-thumb {
+    background: rgba(0, 212, 255, 0.2);
+    border-radius: 3px;
+}
+
+::-webkit-scrollbar-thumb:hover {
+    background: rgba(0, 212, 255, 0.4);
+}
+
+/* ---- Utility Classes ---- */
+.gradient-text {
+    background: var(--gradient-primary);
+    -webkit-background-clip: text;
+    -webkit-text-fill-color: transparent;
+    background-clip: text;
+}
+
+/* ---- Logo ---- */
+.logo-icon {
+    width: 36px;
+    height: 36px;
+}
+
+.logo-icon svg {
+    width: 100%;
+    height: 100%;
+}
+
+.logo-text {
+    font-family: 'Outfit', sans-serif;
+    font-size: 1.2rem;
+    font-weight: 800;
+    letter-spacing: 2px;
+    background: var(--gradient-primary);
+    -webkit-background-clip: text;
+    -webkit-text-fill-color: transparent;
+    background-clip: text;
+}
+
+.logo-sub {
+    font-family: 'Outfit', sans-serif;
+    font-size: 0.65rem;
+    font-weight: 500;
+    letter-spacing: 3px;
+    color: var(--text-secondary);
+}
+
+/* ---- Buttons ---- */
+.btn {
+    display: inline-flex;
+    align-items: center;
+    gap: 10px;
+    padding: 14px 32px;
+    font-family: 'Inter', sans-serif;
+    font-size: 0.95rem;
+    font-weight: 600;
+    border: none;
+    border-radius: 50px;
+    cursor: pointer;
+    transition: all var(--transition-normal);
+    position: relative;
+    overflow: hidden;
+}
+
+.btn-primary {
+    background: var(--gradient-primary);
+    color: #fff;
+    box-shadow: 0 4px 20px rgba(0, 212, 255, 0.25);
+}
+
+.btn-primary:hover {
+    transform: translateY(-2px);
+    box-shadow: 0 6px 30px rgba(0, 212, 255, 0.4);
+}
+
+.btn-primary::after {
+    content: '';
+    position: absolute;
+    top: 0;
+    left: -100%;
+    width: 100%;
+    height: 100%;
+    background: linear-gradient(90deg, transparent, rgba(255,255,255,0.2), transparent);
+    transition: left 0.6s;
+}
+
+.btn-primary:hover::after {
+    left: 100%;
+}
+
+.btn-outline {
+    background: transparent;
+    color: var(--text-primary);
+    border: 1.5px solid var(--border-hover);
+}
+
+.btn-outline:hover {
+    background: rgba(0, 212, 255, 0.08);
+    border-color: var(--accent-cyan);
+    transform: translateY(-2px);
+}
+
+.btn-full {
+    width: 100%;
+    justify-content: center;
+}
+
+/* ---- Mobile Sidebar Toggle ---- */
+.mobile-sidebar-toggle {
+    display: none;
+    position: fixed;
+    top: 16px;
+    left: 16px;
+    z-index: 200;
+    width: 44px;
+    height: 44px;
+    border-radius: var(--radius-sm);
+    background: var(--bg-secondary);
+    border: 1px solid var(--border-color);
+    color: var(--text-primary);
+    align-items: center;
+    justify-content: center;
+    cursor: pointer;
+}
+
+.mobile-sidebar-toggle svg {
+    width: 22px;
+    height: 22px;
+}
+
+/* ---- Responsive: Mobile Sidebar ---- */
+@media (max-width: 900px) {
+    .mobile-sidebar-toggle {
+        display: flex;
+    }
+
+    .sidebar {
+        transform: translateX(-100%);
+    }
+
+    .sidebar.active {
+        transform: translateX(0);
+    }
+
+    .admin-main {
+        margin-left: 0 !important;
+        padding: 80px 16px 32px !important;
+    }
+}
+
+@media (max-width: 640px) {
+    .stats-grid {
+        grid-template-columns: repeat(2, 1fr) !important;
+    }
+
+    .admin-header {
+        flex-direction: column;
+    }
+
+    .header-actions {
+        width: 100%;
+    }
+
+    .admin-search input {
+        width: 100% !important;
+    }
+}
+
+/* ---- Print Styles ---- */
+@media print {
+    .sidebar,
+    .mobile-sidebar-toggle,
+    .admin-header,
+    .filters-bar,
+    .bulk-actions-bar,
+    .modal-overlay {
+        display: none !important;
+    }
+
+    .admin-main {
+        margin-left: 0 !important;
+    }
+
+    body {
+        background: #fff;
+        color: #000;
+    }
+}

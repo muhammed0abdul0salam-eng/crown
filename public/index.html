@@ -1,0 +1,825 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>CrownStone Security | Professional CCTV Installation & Services</title>
+    <meta name="description" content="Crownstone Security provides expert CCTV installation, surveillance solutions, and security services. Protect your property with cutting-edge technology and 24/7 monitoring.">
+    <meta name="keywords" content="CCTV installation, security cameras, surveillance, home security, business security, CrownStone Security, CrownStoneSecurity.com">
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800;900&family=Outfit:wght@400;500;600;700;800&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="styles.css">
+</head>
+<body>
+    <!-- Preloader -->
+    <div id="preloader">
+        <div class="loader-ring">
+            <div class="loader-icon">
+                <svg viewBox="0 0 64 64" fill="none" xmlns="http://www.w3.org/2000/svg">
+                    <circle cx="32" cy="32" r="28" stroke="url(#grad1)" stroke-width="2.5"/>
+                    <circle cx="32" cy="32" r="10" fill="url(#grad1)"/>
+                    <path d="M32 4 L32 16" stroke="url(#grad1)" stroke-width="2" stroke-linecap="round"/>
+                    <path d="M32 48 L32 60" stroke="url(#grad1)" stroke-width="2" stroke-linecap="round"/>
+                    <path d="M4 32 L16 32" stroke="url(#grad1)" stroke-width="2" stroke-linecap="round"/>
+                    <path d="M48 32 L60 32" stroke="url(#grad1)" stroke-width="2" stroke-linecap="round"/>
+                    <defs>
+                        <linearGradient id="grad1" x1="0%" y1="0%" x2="100%" y2="100%">
+                            <stop offset="0%" style="stop-color:#00d4ff"/>
+                            <stop offset="100%" style="stop-color:#7b2ff7"/>
+                        </linearGradient>
+                    </defs>
+                </svg>
+            </div>
+        </div>
+        <p class="loader-text">CROWNSTONE SECURITY</p>
+    </div>
+
+    <!-- Navigation -->
+    <nav id="navbar" class="navbar">
+        <div class="nav-container">
+            <a href="#home" class="logo">
+                <div class="logo-icon">
+                    <svg viewBox="0 0 40 40" fill="none" xmlns="http://www.w3.org/2000/svg">
+                        <circle cx="20" cy="20" r="18" stroke="url(#logoGrad)" stroke-width="2"/>
+                        <circle cx="20" cy="20" r="7" fill="url(#logoGrad)"/>
+                        <path d="M20 2 L20 10" stroke="url(#logoGrad)" stroke-width="1.5" stroke-linecap="round"/>
+                        <path d="M20 30 L20 38" stroke="url(#logoGrad)" stroke-width="1.5" stroke-linecap="round"/>
+                        <path d="M2 20 L10 20" stroke="url(#logoGrad)" stroke-width="1.5" stroke-linecap="round"/>
+                        <path d="M30 20 L38 20" stroke="url(#logoGrad)" stroke-width="1.5" stroke-linecap="round"/>
+                        <defs>
+                            <linearGradient id="logoGrad" x1="0%" y1="0%" x2="100%" y2="100%">
+                                <stop offset="0%" style="stop-color:#00d4ff"/>
+                                <stop offset="100%" style="stop-color:#7b2ff7"/>
+                            </linearGradient>
+                        </defs>
+                    </svg>
+                </div>
+                <span class="logo-text">CROWNSTONE</span>
+                <span class="logo-sub">SECURITY</span>
+            </a>
+            <ul class="nav-links" id="navLinks">
+                <li><a href="#home" class="nav-link active">Home</a></li>
+                <li><a href="#services" class="nav-link">Services</a></li>
+                <li><a href="#about" class="nav-link">About</a></li>
+                <li><a href="#why-us" class="nav-link">Why Us</a></li>
+                <li><a href="#gallery" class="nav-link">Gallery</a></li>
+                <li><a href="#testimonials" class="nav-link">Testimonials</a></li>
+                <li><a href="#contact" class="nav-link">Contact</a></li>
+            </ul>
+            <button class="nav-toggle" id="navToggle" aria-label="Toggle Navigation">
+                <span class="bar"></span>
+                <span class="bar"></span>
+                <span class="bar"></span>
+            </button>
+        </div>
+    </nav>
+
+    <!-- Hero Section -->
+    <section id="home" class="hero">
+        <div class="hero-bg">
+            <div class="grid-overlay"></div>
+            <div class="floating-particles" id="particles"></div>
+        </div>
+        <div class="hero-content">
+            <div class="hero-badge">
+                <span class="badge-dot"></span>
+                Trusted Security Partner Since 2015
+            </div>
+            <h1 class="hero-title">
+                <span class="title-line">Protecting What</span>
+                <span class="title-line gradient-text">Matters Most</span>
+            </h1>
+            <p class="hero-description">
+                Advanced CCTV surveillance systems with cutting-edge technology, 
+                professional installation, and 24/7 monitoring to safeguard your 
+                home and business.
+            </p>
+            <div class="hero-actions">
+                <a href="#contact" class="btn btn-primary" id="hero-cta-primary">
+                    <span>Get Free Quote</span>
+                    <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M5 12h14M12 5l7 7-7 7"/></svg>
+                </a>
+                <a href="#services" class="btn btn-outline" id="hero-cta-secondary">
+                    <span>Our Services</span>
+                </a>
+            </div>
+            <div class="hero-stats">
+                <div class="stat-item">
+                    <span class="stat-number" data-target="2500">0</span>
+                    <span class="stat-suffix">+</span>
+                    <span class="stat-label">Installations</span>
+                </div>
+                <div class="stat-divider"></div>
+                <div class="stat-item">
+                    <span class="stat-number" data-target="98">0</span>
+                    <span class="stat-suffix">%</span>
+                    <span class="stat-label">Client Satisfaction</span>
+                </div>
+                <div class="stat-divider"></div>
+                <div class="stat-item">
+                    <span class="stat-number" data-target="10">0</span>
+                    <span class="stat-suffix">+</span>
+                    <span class="stat-label">Years Experience</span>
+                </div>
+            </div>
+        </div>
+        <div class="hero-visual">
+            <div class="camera-3d">
+                <div class="camera-body">
+                    <div class="camera-lens">
+                        <div class="lens-ring"></div>
+                        <div class="lens-core"></div>
+                        <div class="lens-flare"></div>
+                    </div>
+                    <div class="camera-indicator"></div>
+                </div>
+                <div class="scan-line"></div>
+                <div class="detection-zone"></div>
+            </div>
+        </div>
+        <div class="scroll-indicator">
+            <div class="mouse">
+                <div class="wheel"></div>
+            </div>
+            <span>Scroll Down</span>
+        </div>
+    </section>
+
+    <!-- Services Section -->
+    <section id="services" class="services">
+        <div class="container">
+            <div class="section-header">
+                <span class="section-tag">What We Do</span>
+                <h2 class="section-title">Our <span class="gradient-text">Services</span></h2>
+                <p class="section-description">Comprehensive security solutions tailored to your unique needs</p>
+            </div>
+            <div class="services-grid">
+                <div class="service-card" id="service-cctv-install">
+                    <div class="service-icon">
+                        <svg viewBox="0 0 48 48" fill="none" xmlns="http://www.w3.org/2000/svg">
+                            <rect x="4" y="8" width="28" height="20" rx="3" stroke="currentColor" stroke-width="2"/>
+                            <circle cx="18" cy="18" r="6" stroke="currentColor" stroke-width="2"/>
+                            <circle cx="18" cy="18" r="2" fill="currentColor"/>
+                            <path d="M32 14 L42 8 V28 L32 22" stroke="currentColor" stroke-width="2" stroke-linejoin="round"/>
+                            <path d="M8 32 L8 40" stroke="currentColor" stroke-width="2" stroke-linecap="round"/>
+                            <path d="M28 32 L28 40" stroke="currentColor" stroke-width="2" stroke-linecap="round"/>
+                            <path d="M4 40 L32 40" stroke="currentColor" stroke-width="2" stroke-linecap="round"/>
+                        </svg>
+                    </div>
+                    <h3 class="service-title">CCTV Installation</h3>
+                    <p class="service-desc">Professional installation of high-definition IP and analog cameras for homes, offices, and commercial properties with strategic placement.</p>
+                    <ul class="service-features">
+                        <li>HD & 4K Camera Systems</li>
+                        <li>Strategic Placement Analysis</li>
+                        <li>Professional Wiring & Setup</li>
+                    </ul>
+                    <div class="service-hover-line"></div>
+                </div>
+                <div class="service-card featured" id="service-monitoring">
+                    <div class="featured-badge">Most Popular</div>
+                    <div class="service-icon">
+                        <svg viewBox="0 0 48 48" fill="none" xmlns="http://www.w3.org/2000/svg">
+                            <rect x="6" y="6" width="36" height="28" rx="3" stroke="currentColor" stroke-width="2"/>
+                            <path d="M6 28 L18 18 L26 24 L42 12" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/>
+                            <circle cx="18" cy="18" r="2" fill="currentColor"/>
+                            <path d="M18 34 L18 42" stroke="currentColor" stroke-width="2" stroke-linecap="round"/>
+                            <path d="M30 34 L30 42" stroke="currentColor" stroke-width="2" stroke-linecap="round"/>
+                            <path d="M12 42 L36 42" stroke="currentColor" stroke-width="2" stroke-linecap="round"/>
+                        </svg>
+                    </div>
+                    <h3 class="service-title">24/7 Monitoring</h3>
+                    <p class="service-desc">Round-the-clock remote surveillance monitoring with instant alerts and real-time response coordination for complete peace of mind.</p>
+                    <ul class="service-features">
+                        <li>Real-time Alert System</li>
+                        <li>Mobile App Access</li>
+                        <li>Emergency Response</li>
+                    </ul>
+                    <div class="service-hover-line"></div>
+                </div>
+                <div class="service-card" id="service-maintenance">
+                    <div class="service-icon">
+                        <svg viewBox="0 0 48 48" fill="none" xmlns="http://www.w3.org/2000/svg">
+                            <path d="M28 6 L28 12 L34 12" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/>
+                            <circle cx="24" cy="28" r="10" stroke="currentColor" stroke-width="2"/>
+                            <path d="M24 22 L24 28 L28 30" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/>
+                            <path d="M10 18 C10 10 16 4 24 4 L28 4 L28 12 L34 12 L34 4" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/>
+                            <path d="M38 18 C40 20 42 24 42 28" stroke="currentColor" stroke-width="2" stroke-linecap="round"/>
+                            <path d="M6 28 C6 32 8 36 10 38" stroke="currentColor" stroke-width="2" stroke-linecap="round"/>
+                        </svg>
+                    </div>
+                    <h3 class="service-title">Maintenance & AMC</h3>
+                    <p class="service-desc">Regular maintenance, health checks, and annual maintenance contracts to ensure your security systems operate at peak performance.</p>
+                    <ul class="service-features">
+                        <li>Preventive Maintenance</li>
+                        <li>Annual Service Contracts</li>
+                        <li>Priority Support</li>
+                    </ul>
+                    <div class="service-hover-line"></div>
+                </div>
+                <div class="service-card" id="service-access-control">
+                    <div class="service-icon">
+                        <svg viewBox="0 0 48 48" fill="none" xmlns="http://www.w3.org/2000/svg">
+                            <rect x="14" y="20" width="20" height="20" rx="3" stroke="currentColor" stroke-width="2"/>
+                            <circle cx="24" cy="30" r="3" stroke="currentColor" stroke-width="2"/>
+                            <path d="M24 33 L24 36" stroke="currentColor" stroke-width="2" stroke-linecap="round"/>
+                            <path d="M18 20 L18 14 C18 10 20 8 24 8 C28 8 30 10 30 14 L30 20" stroke="currentColor" stroke-width="2" stroke-linecap="round"/>
+                        </svg>
+                    </div>
+                    <h3 class="service-title">Access Control</h3>
+                    <p class="service-desc">Smart access control with biometric systems, key cards, and remote-controlled entry points for enhanced premises security.</p>
+                    <ul class="service-features">
+                        <li>Biometric Systems</li>
+                        <li>Smart Card Access</li>
+                        <li>Remote Entry Control</li>
+                    </ul>
+                    <div class="service-hover-line"></div>
+                </div>
+                <div class="service-card" id="service-networking">
+                    <div class="service-icon">
+                        <svg viewBox="0 0 48 48" fill="none" xmlns="http://www.w3.org/2000/svg">
+                            <circle cx="24" cy="12" r="4" stroke="currentColor" stroke-width="2"/>
+                            <circle cx="10" cy="36" r="4" stroke="currentColor" stroke-width="2"/>
+                            <circle cx="38" cy="36" r="4" stroke="currentColor" stroke-width="2"/>
+                            <circle cx="24" cy="36" r="4" stroke="currentColor" stroke-width="2"/>
+                            <path d="M24 16 L24 32" stroke="currentColor" stroke-width="2"/>
+                            <path d="M22 15 L12 33" stroke="currentColor" stroke-width="2"/>
+                            <path d="M26 15 L36 33" stroke="currentColor" stroke-width="2"/>
+                        </svg>
+                    </div>
+                    <h3 class="service-title">Network Solutions</h3>
+                    <p class="service-desc">Complete networking infrastructure for IP-based surveillance including structured cabling, switches, and NVR setup.</p>
+                    <ul class="service-features">
+                        <li>Structured Cabling</li>
+                        <li>NVR/DVR Configuration</li>
+                        <li>Cloud Storage Setup</li>
+                    </ul>
+                    <div class="service-hover-line"></div>
+                </div>
+                <div class="service-card" id="service-consultation">
+                    <div class="service-icon">
+                        <svg viewBox="0 0 48 48" fill="none" xmlns="http://www.w3.org/2000/svg">
+                            <path d="M8 8 L40 8 L40 34 L26 34 L18 42 L18 34 L8 34 Z" stroke="currentColor" stroke-width="2" stroke-linejoin="round"/>
+                            <circle cx="16" cy="21" r="2" fill="currentColor"/>
+                            <circle cx="24" cy="21" r="2" fill="currentColor"/>
+                            <circle cx="32" cy="21" r="2" fill="currentColor"/>
+                        </svg>
+                    </div>
+                    <h3 class="service-title">Security Consultation</h3>
+                    <p class="service-desc">Expert security assessment and consultation to identify vulnerabilities and design comprehensive protection strategies.</p>
+                    <ul class="service-features">
+                        <li>Site Risk Assessment</li>
+                        <li>Custom Security Plan</li>
+                        <li>Budget Optimization</li>
+                    </ul>
+                    <div class="service-hover-line"></div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- About Section -->
+    <section id="about" class="about">
+        <div class="container">
+            <div class="about-grid">
+                <div class="about-visual">
+                    <div class="about-image-wrapper">
+                        <div class="about-accent-box"></div>
+                        <div class="about-image">
+                            <div class="tech-display">
+                                <div class="tech-circle">
+                                    <svg viewBox="0 0 200 200" fill="none" xmlns="http://www.w3.org/2000/svg">
+                                        <circle cx="100" cy="100" r="90" stroke="rgba(0,212,255,0.2)" stroke-width="1" stroke-dasharray="5 5"/>
+                                        <circle cx="100" cy="100" r="70" stroke="rgba(123,47,247,0.3)" stroke-width="1"/>
+                                        <circle cx="100" cy="100" r="50" stroke="rgba(0,212,255,0.4)" stroke-width="1.5"/>
+                                        <circle cx="100" cy="100" r="25" fill="rgba(0,212,255,0.1)" stroke="rgba(0,212,255,0.6)" stroke-width="2"/>
+                                        <circle cx="100" cy="100" r="8" fill="url(#aboutGrad)"/>
+                                        <!-- Crosshairs -->
+                                        <line x1="100" y1="10" x2="100" y2="45" stroke="rgba(0,212,255,0.3)" stroke-width="1"/>
+                                        <line x1="100" y1="155" x2="100" y2="190" stroke="rgba(0,212,255,0.3)" stroke-width="1"/>
+                                        <line x1="10" y1="100" x2="45" y2="100" stroke="rgba(0,212,255,0.3)" stroke-width="1"/>
+                                        <line x1="155" y1="100" x2="190" y2="100" stroke="rgba(0,212,255,0.3)" stroke-width="1"/>
+                                        <!-- Corner brackets -->
+                                        <path d="M30 30 L30 50 M30 30 L50 30" stroke="rgba(0,212,255,0.5)" stroke-width="1.5"/>
+                                        <path d="M170 30 L170 50 M170 30 L150 30" stroke="rgba(0,212,255,0.5)" stroke-width="1.5"/>
+                                        <path d="M30 170 L30 150 M30 170 L50 170" stroke="rgba(0,212,255,0.5)" stroke-width="1.5"/>
+                                        <path d="M170 170 L170 150 M170 170 L150 170" stroke="rgba(0,212,255,0.5)" stroke-width="1.5"/>
+                                        <defs>
+                                            <radialGradient id="aboutGrad">
+                                                <stop offset="0%" style="stop-color:#00d4ff"/>
+                                                <stop offset="100%" style="stop-color:#7b2ff7"/>
+                                            </radialGradient>
+                                        </defs>
+                                    </svg>
+                                </div>
+                                <div class="tech-label">SURVEILLANCE ACTIVE</div>
+                                <div class="tech-data">
+                                    <span class="data-item"><span class="data-dot green"></span>32 Cameras Online</span>
+                                    <span class="data-item"><span class="data-dot blue"></span>AI Detection ON</span>
+                                    <span class="data-item"><span class="data-dot purple"></span>Recording 4K</span>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="experience-badge">
+                            <span class="exp-number">10+</span>
+                            <span class="exp-text">Years of<br>Excellence</span>
+                        </div>
+                    </div>
+                </div>
+                <div class="about-content">
+                    <span class="section-tag">Who We Are</span>
+                    <h2 class="section-title">About <span class="gradient-text">CrownStone Security</span></h2>
+                    <p class="about-text">
+                        CrownStone Security is a leading provider of professional CCTV installation and surveillance solutions. 
+                        With over a decade of expertise, we deliver state-of-the-art security systems that protect homes, 
+                        businesses, and commercial properties across the region.
+                    </p>
+                    <p class="about-text">
+                        Our team of certified technicians ensures every installation meets the highest industry standards, 
+                        using only premium-grade equipment from trusted manufacturers.
+                    </p>
+                    <div class="about-features">
+                        <div class="about-feature">
+                            <div class="feature-icon">
+                                <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M12 22s8-4 8-10V5l-8-3-8 3v7c0 6 8 10 8 10z"/></svg>
+                            </div>
+                            <div>
+                                <h4>Certified & Insured</h4>
+                                <p>Fully licensed professionals with comprehensive insurance coverage</p>
+                            </div>
+                        </div>
+                        <div class="about-feature">
+                            <div class="feature-icon">
+                                <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><circle cx="12" cy="12" r="10"/><path d="M12 6v6l4 2"/></svg>
+                            </div>
+                            <div>
+                                <h4>24/7 Support</h4>
+                                <p>Round-the-clock technical support and emergency response</p>
+                            </div>
+                        </div>
+                        <div class="about-feature">
+                            <div class="feature-icon">
+                                <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M22 11.08V12a10 10 0 1 1-5.93-9.14"/><polyline points="22 4 12 14.01 9 11.01"/></svg>
+                            </div>
+                            <div>
+                                <h4>Quality Guaranteed</h4>
+                                <p>Premium equipment with manufacturer warranties and satisfaction guarantee</p>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Why Choose Us Section -->
+    <section id="why-us" class="why-us">
+        <div class="container">
+            <div class="section-header">
+                <span class="section-tag">Why Choose Us</span>
+                <h2 class="section-title">The CrownStone <span class="gradient-text">Advantage</span></h2>
+                <p class="section-description">What sets us apart from the competition</p>
+            </div>
+            <div class="advantages-grid">
+                <div class="advantage-card">
+                    <div class="advantage-number">01</div>
+                    <h3>Expert Installation</h3>
+                    <p>Our certified technicians bring precision and expertise to every installation, ensuring optimal camera placement and coverage.</p>
+                </div>
+                <div class="advantage-card">
+                    <div class="advantage-number">02</div>
+                    <h3>Latest Technology</h3>
+                    <p>We use cutting-edge 4K cameras, AI-powered analytics, and cloud-based storage solutions for superior surveillance.</p>
+                </div>
+                <div class="advantage-card">
+                    <div class="advantage-number">03</div>
+                    <h3>Custom Solutions</h3>
+                    <p>Every property is unique. We design tailored security systems that perfectly match your specific requirements and budget.</p>
+                </div>
+                <div class="advantage-card">
+                    <div class="advantage-number">04</div>
+                    <h3>Competitive Pricing</h3>
+                    <p>Premium security doesn't have to break the bank. We offer transparent pricing with no hidden costs or surprises.</p>
+                </div>
+                <div class="advantage-card">
+                    <div class="advantage-number">05</div>
+                    <h3>Rapid Response</h3>
+                    <p>From enquiry to installation in as little as 24 hours. Our streamlined process gets you protected fast.</p>
+                </div>
+                <div class="advantage-card">
+                    <div class="advantage-number">06</div>
+                    <h3>After-Sales Support</h3>
+                    <p>Our relationship doesn't end at installation. Enjoy ongoing support, maintenance, and system upgrades.</p>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Gallery / Projects Section -->
+    <section id="gallery" class="gallery">
+        <div class="container">
+            <div class="section-header">
+                <span class="section-tag">Our Work</span>
+                <h2 class="section-title">Recent <span class="gradient-text">Projects</span></h2>
+                <p class="section-description">A showcase of our professional installations across various sectors</p>
+            </div>
+            <div class="gallery-grid">
+                <div class="gallery-item large" id="gallery-item-1">
+                    <div class="gallery-overlay">
+                        <div class="gallery-info">
+                            <span class="gallery-category">Commercial</span>
+                            <h3>Corporate Office Complex</h3>
+                            <p>48 IP Cameras | Full Coverage</p>
+                        </div>
+                    </div>
+                    <div class="gallery-placeholder">
+                        <svg viewBox="0 0 120 80" fill="none" xmlns="http://www.w3.org/2000/svg">
+                            <rect x="10" y="15" width="100" height="50" rx="4" stroke="rgba(0,212,255,0.4)" stroke-width="1.5"/>
+                            <rect x="20" y="10" width="80" height="5" rx="2" stroke="rgba(0,212,255,0.3)" stroke-width="1"/>
+                            <rect x="30" y="25" width="15" height="20" rx="1" stroke="rgba(0,212,255,0.5)" stroke-width="1" fill="rgba(0,212,255,0.05)"/>
+                            <rect x="50" y="25" width="15" height="20" rx="1" stroke="rgba(123,47,247,0.5)" stroke-width="1" fill="rgba(123,47,247,0.05)"/>
+                            <rect x="70" y="25" width="15" height="20" rx="1" stroke="rgba(0,212,255,0.5)" stroke-width="1" fill="rgba(0,212,255,0.05)"/>
+                            <rect x="30" y="50" width="55" height="8" rx="1" stroke="rgba(0,212,255,0.3)" stroke-width="1"/>
+                            <circle cx="105" cy="20" r="3" fill="rgba(0,255,136,0.6)"/>
+                        </svg>
+                    </div>
+                </div>
+                <div class="gallery-item" id="gallery-item-2">
+                    <div class="gallery-overlay">
+                        <div class="gallery-info">
+                            <span class="gallery-category">Residential</span>
+                            <h3>Luxury Villa</h3>
+                            <p>16 HD Cameras | Smart Home</p>
+                        </div>
+                    </div>
+                    <div class="gallery-placeholder">
+                        <svg viewBox="0 0 80 80" fill="none" xmlns="http://www.w3.org/2000/svg">
+                            <path d="M40 10 L70 30 L70 65 L10 65 L10 30 Z" stroke="rgba(0,212,255,0.4)" stroke-width="1.5" fill="rgba(0,212,255,0.02)"/>
+                            <rect x="25" y="38" width="12" height="12" rx="1" stroke="rgba(123,47,247,0.5)" stroke-width="1"/>
+                            <rect x="45" y="38" width="12" height="12" rx="1" stroke="rgba(123,47,247,0.5)" stroke-width="1"/>
+                            <rect x="33" y="50" width="14" height="15" rx="1" stroke="rgba(0,212,255,0.5)" stroke-width="1"/>
+                            <circle cx="60" cy="25" r="3" fill="rgba(0,255,136,0.6)"/>
+                        </svg>
+                    </div>
+                </div>
+                <div class="gallery-item" id="gallery-item-3">
+                    <div class="gallery-overlay">
+                        <div class="gallery-info">
+                            <span class="gallery-category">Retail</span>
+                            <h3>Shopping Mall</h3>
+                            <p>96 PTZ Cameras | AI Analytics</p>
+                        </div>
+                    </div>
+                    <div class="gallery-placeholder">
+                        <svg viewBox="0 0 80 80" fill="none" xmlns="http://www.w3.org/2000/svg">
+                            <rect x="10" y="20" width="60" height="45" rx="3" stroke="rgba(0,212,255,0.4)" stroke-width="1.5"/>
+                            <path d="M10 35 L70 35" stroke="rgba(123,47,247,0.3)" stroke-width="1"/>
+                            <rect x="18" y="40" width="8" height="20" rx="1" stroke="rgba(0,212,255,0.3)" stroke-width="1"/>
+                            <rect x="30" y="40" width="8" height="20" rx="1" stroke="rgba(0,212,255,0.3)" stroke-width="1"/>
+                            <rect x="42" y="40" width="8" height="20" rx="1" stroke="rgba(0,212,255,0.3)" stroke-width="1"/>
+                            <rect x="54" y="40" width="8" height="20" rx="1" stroke="rgba(0,212,255,0.3)" stroke-width="1"/>
+                            <circle cx="65" cy="25" r="3" fill="rgba(0,255,136,0.6)"/>
+                        </svg>
+                    </div>
+                </div>
+                <div class="gallery-item" id="gallery-item-4">
+                    <div class="gallery-overlay">
+                        <div class="gallery-info">
+                            <span class="gallery-category">Industrial</span>
+                            <h3>Warehouse Facility</h3>
+                            <p>32 Cameras | Perimeter Security</p>
+                        </div>
+                    </div>
+                    <div class="gallery-placeholder">
+                        <svg viewBox="0 0 80 80" fill="none" xmlns="http://www.w3.org/2000/svg">
+                            <rect x="5" y="30" width="70" height="35" rx="2" stroke="rgba(0,212,255,0.4)" stroke-width="1.5"/>
+                            <path d="M5 30 L40 12 L75 30" stroke="rgba(123,47,247,0.4)" stroke-width="1.5"/>
+                            <rect x="15" y="45" width="20" height="20" rx="1" stroke="rgba(0,212,255,0.3)" stroke-width="1"/>
+                            <rect x="45" y="45" width="20" height="20" rx="1" stroke="rgba(0,212,255,0.3)" stroke-width="1"/>
+                            <line x1="0" y1="65" x2="80" y2="65" stroke="rgba(0,212,255,0.2)" stroke-width="1"/>
+                            <circle cx="70" cy="22" r="3" fill="rgba(0,255,136,0.6)"/>
+                        </svg>
+                    </div>
+                </div>
+                <div class="gallery-item large" id="gallery-item-5">
+                    <div class="gallery-overlay">
+                        <div class="gallery-info">
+                            <span class="gallery-category">Government</span>
+                            <h3>Municipal Building</h3>
+                            <p>64 Cameras | High-Security Zone</p>
+                        </div>
+                    </div>
+                    <div class="gallery-placeholder">
+                        <svg viewBox="0 0 120 80" fill="none" xmlns="http://www.w3.org/2000/svg">
+                            <rect x="25" y="25" width="70" height="45" rx="3" stroke="rgba(0,212,255,0.4)" stroke-width="1.5"/>
+                            <path d="M25 25 L60 8 L95 25" stroke="rgba(123,47,247,0.4)" stroke-width="1.5"/>
+                            <rect x="35" y="35" width="10" height="15" rx="1" stroke="rgba(0,212,255,0.3)" stroke-width="1"/>
+                            <rect x="50" y="35" width="10" height="15" rx="1" stroke="rgba(0,212,255,0.3)" stroke-width="1"/>
+                            <rect x="65" y="35" width="10" height="15" rx="1" stroke="rgba(0,212,255,0.3)" stroke-width="1"/>
+                            <rect x="80" y="35" width="10" height="15" rx="1" stroke="rgba(0,212,255,0.3)" stroke-width="1"/>
+                            <rect x="52" y="55" width="16" height="15" rx="1" stroke="rgba(0,212,255,0.4)" stroke-width="1"/>
+                            <path d="M60 8 L60 2" stroke="rgba(123,47,247,0.5)" stroke-width="1.5"/>
+                            <circle cx="60" cy="2" r="2" fill="rgba(123,47,247,0.5)"/>
+                            <circle cx="20" cy="30" r="3" fill="rgba(0,255,136,0.6)"/>
+                            <circle cx="100" cy="30" r="3" fill="rgba(0,255,136,0.6)"/>
+                        </svg>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Testimonials Section -->
+    <section id="testimonials" class="testimonials">
+        <div class="container">
+            <div class="section-header">
+                <span class="section-tag">Testimonials</span>
+                <h2 class="section-title">What Our <span class="gradient-text">Clients Say</span></h2>
+                <p class="section-description">Hear from businesses and homeowners who trust Crownstone Security</p>
+            </div>
+            <div class="testimonials-slider" id="testimonialSlider">
+                <div class="testimonial-track" id="testimonialTrack">
+                    <div class="testimonial-card">
+                        <div class="testimonial-stars">★★★★★</div>
+                        <p class="testimonial-text">"CrownStone Security transformed our office security. The installation was seamless, and the 4K cameras provide crystal-clear footage. Their support team is responsive and professional."</p>
+                        <div class="testimonial-author">
+                            <div class="author-avatar">
+                                <span>AR</span>
+                            </div>
+                            <div>
+                                <h4>Arun Rajesh</h4>
+                                <p>CEO, TechVista Solutions</p>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="testimonial-card">
+                        <div class="testimonial-stars">★★★★★</div>
+                        <p class="testimonial-text">"We've been using their monitoring service for 2 years now. The real-time alerts have been invaluable. They caught an attempted break-in at our warehouse within minutes."</p>
+                        <div class="testimonial-author">
+                            <div class="author-avatar">
+                                <span>PK</span>
+                            </div>
+                            <div>
+                                <h4>Priya Kumar</h4>
+                                <p>Operations Manager, LogiPrime</p>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="testimonial-card">
+                        <div class="testimonial-stars">★★★★★</div>
+                        <p class="testimonial-text">"The team was incredibly professional. They assessed our home, recommended the perfect setup, and completed the installation in just one day. Highly recommended!"</p>
+                        <div class="testimonial-author">
+                            <div class="author-avatar">
+                                <span>SK</span>
+                            </div>
+                            <div>
+                                <h4>Suresh Krishnan</h4>
+                                <p>Homeowner</p>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="testimonial-card">
+                        <div class="testimonial-stars">★★★★★</div>
+                        <p class="testimonial-text">"Our retail chain needed a unified security solution across 12 stores. CrownStone delivered a centralized monitoring system that works flawlessly. Outstanding service!"</p>
+                        <div class="testimonial-author">
+                            <div class="author-avatar">
+                                <span>MN</span>
+                            </div>
+                            <div>
+                                <h4>Meera Nair</h4>
+                                <p>Director, FreshMart Retail</p>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                <div class="slider-controls">
+                    <button class="slider-btn prev" id="prevBtn" aria-label="Previous testimonial">
+                        <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M19 12H5M12 19l-7-7 7-7"/></svg>
+                    </button>
+                    <div class="slider-dots" id="sliderDots"></div>
+                    <button class="slider-btn next" id="nextBtn" aria-label="Next testimonial">
+                        <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M5 12h14M12 5l7 7-7 7"/></svg>
+                    </button>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Contact / Enquiry Section -->
+    <section id="contact" class="contact">
+        <div class="container">
+            <div class="contact-grid">
+                <div class="contact-info">
+                    <span class="section-tag">Get In Touch</span>
+                    <h2 class="section-title">Request a <span class="gradient-text">Free Quote</span></h2>
+                    <p class="contact-description">
+                        Fill out the form and our team will get back to you within 24 hours.
+                        We offer free site surveys and no-obligation consultations for CrownStoneSecurity.com customers.
+                    </p>
+                    <div class="contact-details">
+                        <div class="contact-item">
+                            <div class="contact-icon">
+                                <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M22 16.92v3a2 2 0 0 1-2.18 2 19.79 19.79 0 0 1-8.63-3.07 19.5 19.5 0 0 1-6-6 19.79 19.79 0 0 1-3.07-8.67A2 2 0 0 1 4.11 2h3a2 2 0 0 1 2 1.72 12.84 12.84 0 0 0 .7 2.81 2 2 0 0 1-.45 2.11L8.09 9.91a16 16 0 0 0 6 6l1.27-1.27a2 2 0 0 1 2.11-.45 12.84 12.84 0 0 0 2.81.7A2 2 0 0 1 22 16.92z"/></svg>
+                            </div>
+                            <div>
+                                <h4>Phone</h4>
+                                <p id="sitePhone">+91 98765 43210</p>
+                                <p id="sitePhone2" style="display:none;"></p>
+                            </div>
+                        </div>
+                        <div class="contact-item">
+                            <div class="contact-icon">
+                                <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M4 4h16c1.1 0 2 .9 2 2v12c0 1.1-.9 2-2 2H4c-1.1 0-2-.9-2-2V6c0-1.1.9-2 2-2z"/><polyline points="22,6 12,13 2,6"/></svg>
+                            </div>
+                            <div>
+                                <h4>Email</h4>
+                                <p id="siteEmail">info@CrownStoneSecurity.com</p>
+                            </div>
+                        </div>
+                        <div class="contact-item">
+                            <div class="contact-icon">
+                                <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M21 10c0 7-9 13-9 13s-9-6-9-13a9 9 0 0 1 18 0z"/><circle cx="12" cy="10" r="3"/></svg>
+                            </div>
+                            <div>
+                                <h4>Address</h4>
+                                <p id="siteAddress">42 Security Tower, Tech Park Road<br>Bangalore, Karnataka 560001</p>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="social-links">
+                        <a href="#" class="social-link" aria-label="Facebook">
+                            <svg viewBox="0 0 24 24" fill="currentColor"><path d="M18 2h-3a5 5 0 0 0-5 5v3H7v4h3v8h4v-8h3l1-4h-4V7a1 1 0 0 1 1-1h3z"/></svg>
+                        </a>
+                        <a href="#" class="social-link" aria-label="Instagram">
+                            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><rect x="2" y="2" width="20" height="20" rx="5"/><path d="M16 11.37A4 4 0 1 1 12.63 8 4 4 0 0 1 16 11.37z"/><line x1="17.5" y1="6.5" x2="17.51" y2="6.5"/></svg>
+                        </a>
+                        <a href="#" class="social-link" aria-label="Twitter">
+                            <svg viewBox="0 0 24 24" fill="currentColor"><path d="M23 3a10.9 10.9 0 0 1-3.14 1.53 4.48 4.48 0 0 0-7.86 3v1A10.66 10.66 0 0 1 3 4s-4 9 5 13a11.64 11.64 0 0 1-7 2c9 5 20 0 20-11.5a4.5 4.5 0 0 0-.08-.83A7.72 7.72 0 0 0 23 3z"/></svg>
+                        </a>
+                        <a href="#" class="social-link" aria-label="LinkedIn">
+                            <svg viewBox="0 0 24 24" fill="currentColor"><path d="M16 8a6 6 0 0 1 6 6v7h-4v-7a2 2 0 0 0-2-2 2 2 0 0 0-2 2v7h-4v-7a6 6 0 0 1 6-6z"/><rect x="2" y="9" width="4" height="12"/><circle cx="4" cy="4" r="2"/></svg>
+                        </a>
+                        <a href="#" class="social-link" aria-label="YouTube">
+                            <svg viewBox="0 0 24 24" fill="currentColor"><path d="M22.54 6.42a2.78 2.78 0 0 0-1.94-2C18.88 4 12 4 12 4s-6.88 0-8.6.46a2.78 2.78 0 0 0-1.94 2A29 29 0 0 0 1 11.75a29 29 0 0 0 .46 5.33A2.78 2.78 0 0 0 3.4 19.1c1.72.46 8.6.46 8.6.46s6.88 0 8.6-.46a2.78 2.78 0 0 0 1.94-2 29 29 0 0 0 .46-5.25 29 29 0 0 0-.46-5.33z"/><polygon points="9.75 15.02 15.5 11.75 9.75 8.48 9.75 15.02" fill="#0a0e1a"/></svg>
+                        </a>
+                    </div>
+                </div>
+                <div class="contact-form-wrapper">
+                    <form id="enquiryForm" class="contact-form">
+                        <h3 class="form-title">Send Us an Enquiry</h3>
+                        <div class="form-row">
+                            <div class="form-group">
+                                <label for="fullName">Full Name *</label>
+                                <input type="text" id="fullName" name="fullName" placeholder="John Doe" required>
+                            </div>
+                            <div class="form-group">
+                                <label for="phone">Phone Number *</label>
+                                <input type="tel" id="phone" name="phone" placeholder="+91 98765 43210" required>
+                            </div>
+                        </div>
+                        <div class="form-group">
+                            <label for="email">Email Address *</label>
+                            <input type="email" id="email" name="email" placeholder="john@example.com" required>
+                        </div>
+                        <div class="form-row">
+                            <div class="form-group">
+                                <label for="serviceType">Service Required *</label>
+                                <select id="serviceType" name="serviceType" required>
+                                    <option value="" disabled selected>Select a service</option>
+                                    <option value="CCTV Installation">CCTV Installation</option>
+                                    <option value="24/7 Monitoring">24/7 Monitoring</option>
+                                    <option value="Maintenance & AMC">Maintenance & AMC</option>
+                                    <option value="Access Control">Access Control</option>
+                                    <option value="Network Solutions">Network Solutions</option>
+                                    <option value="Security Consultation">Security Consultation</option>
+                                    <option value="Other">Other</option>
+                                </select>
+                            </div>
+                            <div class="form-group">
+                                <label for="propertyType">Property Type</label>
+                                <select id="propertyType" name="propertyType">
+                                    <option value="" disabled selected>Select type</option>
+                                    <option value="Residential">Residential</option>
+                                    <option value="Commercial">Commercial</option>
+                                    <option value="Industrial">Industrial</option>
+                                    <option value="Government">Government</option>
+                                    <option value="Retail">Retail</option>
+                                    <option value="Other">Other</option>
+                                </select>
+                            </div>
+                        </div>
+                        <div class="form-group">
+                            <label for="address">Property Address</label>
+                            <input type="text" id="address" name="address" placeholder="Enter your property address">
+                        </div>
+                        <div class="form-group">
+                            <label for="message">Additional Details</label>
+                            <textarea id="message" name="message" rows="4" placeholder="Tell us about your security requirements..."></textarea>
+                        </div>
+                        <div class="form-group checkbox-group">
+                            <label class="checkbox-label">
+                                <input type="checkbox" id="consent" name="consent" required>
+                                <span class="checkmark"></span>
+                                I agree to the <a href="#">Terms of Service</a> and <a href="#">Privacy Policy</a>
+                            </label>
+                        </div>
+                        <button type="submit" class="btn btn-primary btn-full" id="submitEnquiry">
+                            <span>Submit Enquiry</span>
+                            <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><line x1="22" y1="2" x2="11" y2="13"/><polygon points="22 2 15 22 11 13 2 9 22 2"/></svg>
+                        </button>
+                    </form>
+                    <!-- Success Message -->
+                    <div id="formSuccess" class="form-success" style="display:none;">
+                        <div class="success-icon">
+                            <svg viewBox="0 0 64 64" fill="none" xmlns="http://www.w3.org/2000/svg">
+                                <circle cx="32" cy="32" r="28" stroke="url(#successGrad)" stroke-width="3"/>
+                                <path d="M20 32 L28 40 L44 24" stroke="url(#successGrad)" stroke-width="3" stroke-linecap="round" stroke-linejoin="round"/>
+                                <defs>
+                                    <linearGradient id="successGrad" x1="0%" y1="0%" x2="100%" y2="100%">
+                                        <stop offset="0%" style="stop-color:#00d4ff"/>
+                                        <stop offset="100%" style="stop-color:#00ff88"/>
+                                    </linearGradient>
+                                </defs>
+                            </svg>
+                        </div>
+                        <h3>Enquiry Submitted Successfully!</h3>
+                        <p>Thank you for contacting CrownStone Security. Our team will reach out to you within 24 hours.</p>
+                        <button class="btn btn-outline" id="submitAnother">Submit Another Enquiry</button>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Footer -->
+    <footer class="footer">
+        <div class="container">
+            <div class="footer-grid">
+                <div class="footer-about">
+                    <a href="#home" class="footer-logo">
+                        <div class="logo-icon">
+                            <svg viewBox="0 0 40 40" fill="none" xmlns="http://www.w3.org/2000/svg">
+                                <circle cx="20" cy="20" r="18" stroke="url(#footLogoGrad)" stroke-width="2"/>
+                                <circle cx="20" cy="20" r="7" fill="url(#footLogoGrad)"/>
+                                <defs>
+                                    <linearGradient id="footLogoGrad" x1="0%" y1="0%" x2="100%" y2="100%">
+                                        <stop offset="0%" style="stop-color:#00d4ff"/>
+                                        <stop offset="100%" style="stop-color:#7b2ff7"/>
+                                    </linearGradient>
+                                </defs>
+                            </svg>
+                        </div>
+                        <span class="logo-text">CROWNSTONE</span>
+                        <span class="logo-sub">SECURITY</span>
+                    </a>
+                    <p>Your trusted partner in professional CCTV installation and comprehensive security solutions. Protecting what matters most since 2015. Visit us at CrownStoneSecurity.com</p>
+                </div>
+                <div class="footer-links-col">
+                    <h4>Quick Links</h4>
+                    <ul>
+                        <li><a href="#home">Home</a></li>
+                        <li><a href="#services">Services</a></li>
+                        <li><a href="#about">About Us</a></li>
+                        <li><a href="#gallery">Gallery</a></li>
+                        <li><a href="#contact">Contact</a></li>
+                    </ul>
+                </div>
+                <div class="footer-links-col">
+                    <h4>Services</h4>
+                    <ul>
+                        <li><a href="#services">CCTV Installation</a></li>
+                        <li><a href="#services">24/7 Monitoring</a></li>
+                        <li><a href="#services">Maintenance & AMC</a></li>
+                        <li><a href="#services">Access Control</a></li>
+                        <li><a href="#services">Network Solutions</a></li>
+                    </ul>
+                </div>
+                <div class="footer-links-col">
+                    <h4>Working Hours</h4>
+                    <ul class="hours-list">
+                        <li><span>Mon - Fri:</span> <span>9:00 AM - 7:00 PM</span></li>
+                        <li><span>Saturday:</span> <span>9:00 AM - 5:00 PM</span></li>
+                        <li><span>Sunday:</span> <span>Emergency Only</span></li>
+                        <li class="highlight"><span>24/7 Monitoring:</span> <span>Always Active</span></li>
+                    </ul>
+                </div>
+            </div>
+            <div class="footer-bottom">
+                <p>&copy; 2025 CrownStone Security. All rights reserved. | CrownStoneSecurity.com</p>
+                <div class="footer-bottom-links">
+                    <a href="#">Privacy Policy</a>
+                    <a href="#">Terms of Service</a>
+                    <a href="#">Sitemap</a>
+                </div>
+            </div>
+        </div>
+    </footer>
+
+    <!-- Back to Top Button -->
+    <button id="backToTop" class="back-to-top" aria-label="Scroll to top">
+        <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M18 15l-6-6-6 6"/></svg>
+    </button>
+
+    <script src="script.js"></script>
+</body>
+</html>
