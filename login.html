@@ -1,0 +1,577 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Admin Login | CrownStoneSecurity.com</title>
+    <meta name="robots" content="noindex, nofollow">
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800;900&family=Outfit:wght@400;500;600;700;800&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="theme.css">
+    <style>
+        *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+
+        :root {
+            --bg-primary: #0a0e1a;
+            --bg-secondary: #111827;
+            --bg-card: rgba(17, 24, 39, 0.8);
+            --text-primary: #f1f5f9;
+            --text-secondary: #9ea4b8;
+            --text-muted: #6b7280;
+            --accent-cyan: #00d4ff;
+            --accent-purple: #7b2ff7;
+            --accent-red: #ff4757;
+            --accent-green: #00ff88;
+            --border-color: rgba(255, 255, 255, 0.06);
+            --gradient-primary: linear-gradient(135deg, #00d4ff, #7b2ff7);
+        }
+
+        body {
+            font-family: 'Inter', -apple-system, sans-serif;
+            background: var(--bg-primary);
+            color: var(--text-primary);
+            min-height: 100vh;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            overflow: hidden;
+            position: relative;
+        }
+
+        /* Background Effects */
+        .login-bg {
+            position: fixed;
+            inset: 0;
+            z-index: 0;
+        }
+
+        .login-bg::before {
+            content: '';
+            position: absolute;
+            top: -50%;
+            left: -50%;
+            width: 200%;
+            height: 200%;
+            background: 
+                radial-gradient(ellipse at 20% 50%, rgba(0, 212, 255, 0.08) 0%, transparent 50%),
+                radial-gradient(ellipse at 80% 50%, rgba(123, 47, 247, 0.08) 0%, transparent 50%),
+                radial-gradient(ellipse at 50% 80%, rgba(0, 255, 136, 0.04) 0%, transparent 50%);
+            animation: bgShift 20s ease-in-out infinite alternate;
+        }
+
+        @keyframes bgShift {
+            from { transform: translate(0, 0); }
+            to { transform: translate(-5%, -5%); }
+        }
+
+        .grid-bg {
+            position: absolute;
+            inset: 0;
+            background-image: 
+                linear-gradient(rgba(0, 212, 255, 0.03) 1px, transparent 1px),
+                linear-gradient(90deg, rgba(0, 212, 255, 0.03) 1px, transparent 1px);
+            background-size: 60px 60px;
+        }
+
+        /* Login Card */
+        .login-container {
+            position: relative;
+            z-index: 10;
+            width: 100%;
+            max-width: 440px;
+            padding: 20px;
+        }
+
+        .login-card {
+            background: var(--bg-card);
+            border: 1px solid var(--border-color);
+            border-radius: 24px;
+            padding: 48px 40px;
+            backdrop-filter: blur(20px);
+            box-shadow: 0 25px 80px rgba(0, 0, 0, 0.5);
+            animation: cardEnter 0.6s ease;
+        }
+
+        @keyframes cardEnter {
+            from { opacity: 0; transform: translateY(30px) scale(0.96); }
+            to { opacity: 1; transform: translateY(0) scale(1); }
+        }
+
+        /* Logo */
+        .login-logo {
+            text-align: center;
+            margin-bottom: 12px;
+        }
+
+        .login-logo svg {
+            width: 56px;
+            height: 56px;
+            filter: drop-shadow(0 0 20px rgba(0, 212, 255, 0.3));
+        }
+
+        .login-brand {
+            text-align: center;
+            margin-bottom: 8px;
+        }
+
+        .login-brand h1 {
+            font-family: 'Outfit', sans-serif;
+            font-size: 1.5rem;
+            font-weight: 800;
+            letter-spacing: 3px;
+            background: var(--gradient-primary);
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+            background-clip: text;
+        }
+
+        .login-domain {
+            text-align: center;
+            margin-bottom: 32px;
+        }
+
+        .login-domain span {
+            display: inline-flex;
+            align-items: center;
+            gap: 6px;
+            padding: 4px 14px;
+            background: rgba(0, 212, 255, 0.08);
+            border: 1px solid rgba(0, 212, 255, 0.15);
+            border-radius: 20px;
+            font-size: 0.72rem;
+            font-weight: 600;
+            color: var(--accent-cyan);
+            letter-spacing: 0.5px;
+        }
+
+        .login-domain .dot {
+            width: 6px;
+            height: 6px;
+            border-radius: 50%;
+            background: var(--accent-green);
+            animation: pulse 2s ease infinite;
+        }
+
+        @keyframes pulse {
+            0%, 100% { opacity: 1; }
+            50% { opacity: 0.4; }
+        }
+
+        .login-subtitle {
+            text-align: center;
+            color: var(--text-muted);
+            font-size: 0.88rem;
+            margin-bottom: 32px;
+        }
+
+        /* Form */
+        .login-form {
+            display: flex;
+            flex-direction: column;
+            gap: 20px;
+        }
+
+        .form-field {
+            position: relative;
+        }
+
+        .form-field label {
+            display: block;
+            font-size: 0.8rem;
+            font-weight: 600;
+            color: var(--text-secondary);
+            margin-bottom: 8px;
+            letter-spacing: 0.5px;
+            text-transform: uppercase;
+        }
+
+        .input-wrapper {
+            position: relative;
+        }
+
+        .input-wrapper svg {
+            position: absolute;
+            left: 16px;
+            top: 50%;
+            transform: translateY(-50%);
+            width: 18px;
+            height: 18px;
+            color: var(--text-muted);
+            transition: color 0.3s;
+            pointer-events: none;
+        }
+
+        .input-wrapper input {
+            width: 100%;
+            padding: 14px 16px 14px 48px;
+            background: rgba(0, 0, 0, 0.3);
+            border: 1px solid var(--border-color);
+            border-radius: 12px;
+            color: var(--text-primary);
+            font-family: 'Inter', sans-serif;
+            font-size: 0.95rem;
+            outline: none;
+            transition: all 0.3s;
+        }
+
+        .input-wrapper input:focus {
+            border-color: var(--accent-cyan);
+            box-shadow: 0 0 0 3px rgba(0, 212, 255, 0.1);
+        }
+
+        .input-wrapper input:focus + svg,
+        .input-wrapper input:focus ~ svg {
+            color: var(--accent-cyan);
+        }
+
+        .input-wrapper input::placeholder {
+            color: var(--text-muted);
+        }
+
+        .toggle-password {
+            position: absolute;
+            right: 14px;
+            top: 50%;
+            transform: translateY(-50%);
+            background: none;
+            border: none;
+            color: var(--text-muted);
+            cursor: pointer;
+            padding: 4px;
+            transition: color 0.3s;
+        }
+
+        .toggle-password:hover {
+            color: var(--accent-cyan);
+        }
+
+        .toggle-password svg {
+            position: static;
+            transform: none;
+            width: 18px;
+            height: 18px;
+        }
+
+        /* Error */
+        .login-error {
+            display: none;
+            padding: 12px 16px;
+            background: rgba(255, 71, 87, 0.1);
+            border: 1px solid rgba(255, 71, 87, 0.2);
+            border-radius: 10px;
+            color: var(--accent-red);
+            font-size: 0.85rem;
+            text-align: center;
+            animation: shake 0.4s ease;
+        }
+
+        .login-error.show {
+            display: block;
+        }
+
+        @keyframes shake {
+            0%, 100% { transform: translateX(0); }
+            20%, 60% { transform: translateX(-6px); }
+            40%, 80% { transform: translateX(6px); }
+        }
+
+        /* Submit Button */
+        .login-btn {
+            width: 100%;
+            padding: 16px;
+            background: var(--gradient-primary);
+            border: none;
+            border-radius: 12px;
+            color: #fff;
+            font-family: 'Inter', sans-serif;
+            font-size: 0.95rem;
+            font-weight: 700;
+            cursor: pointer;
+            transition: all 0.3s;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            gap: 10px;
+            letter-spacing: 0.5px;
+            position: relative;
+            overflow: hidden;
+        }
+
+        .login-btn::before {
+            content: '';
+            position: absolute;
+            inset: 0;
+            background: linear-gradient(135deg, rgba(255,255,255,0.1), transparent);
+            opacity: 0;
+            transition: opacity 0.3s;
+        }
+
+        .login-btn:hover::before {
+            opacity: 1;
+        }
+
+        .login-btn:hover {
+            transform: translateY(-2px);
+            box-shadow: 0 8px 30px rgba(0, 212, 255, 0.3);
+        }
+
+        .login-btn:active {
+            transform: translateY(0);
+        }
+
+        .login-btn svg {
+            width: 20px;
+            height: 20px;
+        }
+
+        /* Footer */
+        .login-footer {
+            text-align: center;
+            margin-top: 24px;
+        }
+
+        .login-footer a {
+            color: var(--accent-cyan);
+            text-decoration: none;
+            font-size: 0.85rem;
+            font-weight: 500;
+            transition: color 0.3s;
+        }
+
+        .login-footer a:hover {
+            color: var(--accent-purple);
+        }
+
+        .login-hint {
+            text-align: center;
+            margin-top: 16px;
+            padding: 12px;
+            background: rgba(0, 212, 255, 0.05);
+            border: 1px solid rgba(0, 212, 255, 0.1);
+            border-radius: 10px;
+            font-size: 0.78rem;
+            color: var(--text-muted);
+            line-height: 1.6;
+        }
+
+        .login-hint strong {
+            color: var(--accent-cyan);
+        }
+
+        /* Lockout */
+        .lockout-msg {
+            display: none;
+            text-align: center;
+            padding: 20px;
+            color: var(--accent-red);
+            font-size: 0.88rem;
+        }
+
+        .lockout-msg.show {
+            display: block;
+        }
+
+        /* Responsive */
+        @media (max-width: 480px) {
+            .login-card {
+                padding: 36px 24px;
+            }
+        }
+    </style>
+</head>
+<body>
+    <div class="login-bg">
+        <div class="grid-bg"></div>
+    </div>
+
+    <div class="login-container">
+        <div class="login-card">
+            <!-- Logo -->
+            <div class="login-logo">
+                <svg viewBox="0 0 64 64" fill="none" xmlns="http://www.w3.org/2000/svg">
+                    <circle cx="32" cy="32" r="28" stroke="url(#loginGrad)" stroke-width="2.5"/>
+                    <circle cx="32" cy="32" r="10" fill="url(#loginGrad)"/>
+                    <path d="M32 4 L32 16" stroke="url(#loginGrad)" stroke-width="2" stroke-linecap="round"/>
+                    <path d="M32 48 L32 60" stroke="url(#loginGrad)" stroke-width="2" stroke-linecap="round"/>
+                    <path d="M4 32 L16 32" stroke="url(#loginGrad)" stroke-width="2" stroke-linecap="round"/>
+                    <path d="M48 32 L60 32" stroke="url(#loginGrad)" stroke-width="2" stroke-linecap="round"/>
+                    <defs>
+                        <linearGradient id="loginGrad" x1="0%" y1="0%" x2="100%" y2="100%">
+                            <stop offset="0%" style="stop-color:#00d4ff"/>
+                            <stop offset="100%" style="stop-color:#7b2ff7"/>
+                        </linearGradient>
+                    </defs>
+                </svg>
+            </div>
+
+            <div class="login-brand">
+                <h1>CROWNSTONE</h1>
+            </div>
+
+            <div class="login-domain" style="display:none;">
+                <span><span class="dot"></span> admin.CrownStoneSecurity.com</span>
+            </div>
+
+            <p class="login-subtitle">Sign in to access the admin dashboard</p>
+
+            <!-- Login Form -->
+            <form class="login-form" id="loginForm">
+                <div class="form-field">
+                    <label for="username">Username</label>
+                    <div class="input-wrapper">
+                        <input type="text" id="username" placeholder="Enter email" autocomplete="username" required>
+                        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M20 21v-2a4 4 0 0 0-4-4H8a4 4 0 0 0-4 4v2"/><circle cx="12" cy="7" r="4"/></svg>
+                    </div>
+                </div>
+
+                <div class="form-field">
+                    <label for="password">Password</label>
+                    <div class="input-wrapper">
+                        <input type="password" id="password" placeholder="Enter password" autocomplete="current-password" required>
+                        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><rect x="3" y="11" width="18" height="11" rx="2"/><path d="M7 11V7a5 5 0 0 1 10 0v4"/></svg>
+                        <button type="button" class="toggle-password" id="togglePassword" aria-label="Toggle password visibility">
+                            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M1 12s4-8 11-8 11 8 11 8-4 8-11 8-11-8-11-8z"/><circle cx="12" cy="12" r="3"/></svg>
+                        </button>
+                    </div>
+                </div>
+
+                <div class="login-error" id="loginError">
+                    ⚠️ Invalid username or password. Please try again.
+                </div>
+
+                <div class="lockout-msg" id="lockoutMsg">
+                    🔒 Too many failed attempts. Locked for <span id="lockoutTimer">30</span> seconds.
+                </div>
+
+                <button type="submit" class="login-btn" id="loginBtn">
+                    <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M15 3h4a2 2 0 0 1 2 2v14a2 2 0 0 1-2 2h-4"/><polyline points="10 17 15 12 10 7"/><line x1="15" y1="12" x2="3" y2="12"/></svg>
+                    Sign In to Dashboard
+                </button>
+            </form>
+
+            <div class="login-footer">
+                <a href="index.html">← Back to CrownStoneSecurity.com</a>
+            </div>
+        </div>
+    </div>
+
+    <script>
+    (function() {
+        const STORAGE_KEY = 'crownstone_admin_auth';
+        const CREDENTIALS_KEY = 'crownstone_admin_credentials';
+        const MAX_ATTEMPTS = 5;
+        const LOCKOUT_DURATION = 30000; // 30 seconds
+
+        // Check if already logged in
+        const session = JSON.parse(localStorage.getItem(STORAGE_KEY) || '{}');
+        if (session.loggedIn && session.expiry > Date.now()) {
+            window.location.href = 'dashboard.html';
+            return;
+        }
+
+        // Get stored credentials (or use defaults)
+        function getCredentials() {
+            const stored = JSON.parse(localStorage.getItem(CREDENTIALS_KEY) || '{}');
+            return {
+                username: stored.username || 'css.security.100@gmail.com',
+                password: stored.password || 'Zxcv@1234'
+            };
+        }
+
+        const form = document.getElementById('loginForm');
+        const errorEl = document.getElementById('loginError');
+        const lockoutEl = document.getElementById('lockoutMsg');
+        const lockoutTimerEl = document.getElementById('lockoutTimer');
+        const loginBtn = document.getElementById('loginBtn');
+        const togglePassword = document.getElementById('togglePassword');
+        const passwordInput = document.getElementById('password');
+
+        let failedAttempts = parseInt(sessionStorage.getItem('loginAttempts') || '0');
+        let lockoutEnd = parseInt(sessionStorage.getItem('lockoutEnd') || '0');
+
+        // Toggle password visibility
+        togglePassword.addEventListener('click', () => {
+            const isPassword = passwordInput.type === 'password';
+            passwordInput.type = isPassword ? 'text' : 'password';
+            togglePassword.innerHTML = isPassword
+                ? '<svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M17.94 17.94A10.07 10.07 0 0 1 12 20c-7 0-11-8-11-8a18.45 18.45 0 0 1 5.06-5.94M9.9 4.24A9.12 9.12 0 0 1 12 4c7 0 11 8 11 8a18.5 18.5 0 0 1-2.16 3.19m-6.72-1.07a3 3 0 1 1-4.24-4.24"/><line x1="1" y1="1" x2="23" y2="23"/></svg>'
+                : '<svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M1 12s4-8 11-8 11 8 11 8-4 8-11 8-11-8-11-8z"/><circle cx="12" cy="12" r="3"/></svg>';
+        });
+
+        // Check lockout
+        function checkLockout() {
+            if (Date.now() < lockoutEnd) {
+                const remaining = Math.ceil((lockoutEnd - Date.now()) / 1000);
+                lockoutTimerEl.textContent = remaining;
+                lockoutEl.classList.add('show');
+                loginBtn.disabled = true;
+                loginBtn.style.opacity = '0.5';
+                loginBtn.style.cursor = 'not-allowed';
+                setTimeout(checkLockout, 1000);
+            } else {
+                lockoutEl.classList.remove('show');
+                loginBtn.disabled = false;
+                loginBtn.style.opacity = '';
+                loginBtn.style.cursor = '';
+            }
+        }
+        checkLockout();
+
+        form.addEventListener('submit', (e) => {
+            e.preventDefault();
+
+            // Check lockout
+            if (Date.now() < lockoutEnd) return;
+
+            const username = document.getElementById('username').value.trim();
+            const password = document.getElementById('password').value;
+            const creds = getCredentials();
+
+            if (username === creds.username && password === creds.password) {
+                // Success — create session (8 hour expiry)
+                const auth = {
+                    loggedIn: true,
+                    user: username,
+                    expiry: Date.now() + (8 * 60 * 60 * 1000),
+                    loginTime: new Date().toISOString()
+                };
+                localStorage.setItem(STORAGE_KEY, JSON.stringify(auth));
+                sessionStorage.removeItem('loginAttempts');
+                sessionStorage.removeItem('lockoutEnd');
+
+                // Redirect to dashboard
+                loginBtn.innerHTML = '<svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" style="animation:spin 1s linear infinite"><circle cx="12" cy="12" r="10"/><path d="M12 6v6l4 2"/></svg> Signing in...';
+                loginBtn.disabled = true;
+
+                setTimeout(() => {
+                    window.location.href = 'dashboard.html';
+                }, 800);
+            } else {
+                // Failed
+                failedAttempts++;
+                sessionStorage.setItem('loginAttempts', failedAttempts.toString());
+
+                errorEl.classList.remove('show');
+                void errorEl.offsetWidth; // Force reflow for animation
+                errorEl.classList.add('show');
+
+                if (failedAttempts >= MAX_ATTEMPTS) {
+                    lockoutEnd = Date.now() + LOCKOUT_DURATION;
+                    sessionStorage.setItem('lockoutEnd', lockoutEnd.toString());
+                    failedAttempts = 0;
+                    sessionStorage.setItem('loginAttempts', '0');
+                    errorEl.classList.remove('show');
+                    checkLockout();
+                }
+            }
+        });
+
+        // Add spin animation
+        const style = document.createElement('style');
+        style.textContent = '@keyframes spin { from { transform: rotate(0deg); } to { transform: rotate(360deg); } }';
+        document.head.appendChild(style);
+    })();
+    </script>
+</body>
+</html>

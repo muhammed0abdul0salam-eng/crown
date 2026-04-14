@@ -1,0 +1,582 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Admin Dashboard | CrownStoneSecurity.com</title>
+    <meta name="description" content="CrownStone Security admin dashboard - manage customer enquiries and monitor business performance.">
+    <meta name="robots" content="noindex, nofollow">
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800;900&family=Outfit:wght@400;500;600;700;800&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="theme.css">
+    <link rel="stylesheet" href="admin.css">
+    <!-- Auth Guard: redirect to login if not authenticated -->
+    <script>
+        (function() {
+            var auth = JSON.parse(localStorage.getItem('crownstone_admin_auth') || '{}');
+            if (!auth.loggedIn || auth.expiry < Date.now()) {
+                localStorage.removeItem('crownstone_admin_auth');
+                window.location.replace('login.html');
+            }
+        })();
+    </script>
+</head>
+<body>
+    <!-- Mobile Sidebar Toggle -->
+    <button class="mobile-sidebar-toggle" id="sidebarToggle" aria-label="Toggle sidebar">
+        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round">
+            <line x1="3" y1="6" x2="21" y2="6"/>
+            <line x1="3" y1="12" x2="21" y2="12"/>
+            <line x1="3" y1="18" x2="21" y2="18"/>
+        </svg>
+    </button>
+
+    <div class="admin-layout">
+        <!-- Sidebar -->
+        <aside class="sidebar" id="sidebar">
+            <div class="sidebar-header">
+                <a href="index.html" class="sidebar-logo">
+                    <div class="logo-icon">
+                        <svg viewBox="0 0 40 40" fill="none" xmlns="http://www.w3.org/2000/svg">
+                            <circle cx="20" cy="20" r="18" stroke="url(#adminLogoGrad)" stroke-width="2"/>
+                            <circle cx="20" cy="20" r="7" fill="url(#adminLogoGrad)"/>
+                            <defs>
+                                <linearGradient id="adminLogoGrad" x1="0%" y1="0%" x2="100%" y2="100%">
+                                    <stop offset="0%" style="stop-color:#00d4ff"/>
+                                    <stop offset="100%" style="stop-color:#7b2ff7"/>
+                                </linearGradient>
+                            </defs>
+                        </svg>
+                    </div>
+                    <span class="logo-text">CROWNSTONE</span>
+                </a>
+                <div class="sidebar-badge">
+                    <span class="badge-dot" style="width:6px;height:6px;border-radius:50%;background:#00ff88;display:inline-block;"></span>
+                    admin.CrownStoneSecurity.com
+                </div>
+            </div>
+
+            <nav class="sidebar-nav">
+                <a href="#" class="sidebar-nav-item active" data-view="dashboard" id="nav-dashboard">
+                    <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><rect x="3" y="3" width="7" height="7" rx="1"/><rect x="14" y="3" width="7" height="7" rx="1"/><rect x="3" y="14" width="7" height="7" rx="1"/><rect x="14" y="14" width="7" height="7" rx="1"/></svg>
+                    Dashboard
+                </a>
+                <a href="#" class="sidebar-nav-item" data-view="enquiries" id="nav-enquiries">
+                    <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M4 4h16c1.1 0 2 .9 2 2v12c0 1.1-.9 2-2 2H4c-1.1 0-2-.9-2-2V6c0-1.1.9-2 2-2z"/><polyline points="22,6 12,13 2,6"/></svg>
+                    Enquiries
+                    <span class="badge-count" id="enquiryCount">0</span>
+                </a>
+                <a href="#" class="sidebar-nav-item" data-view="new-enquiries" id="nav-new">
+                    <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><circle cx="12" cy="12" r="10"/><line x1="12" y1="8" x2="12" y2="16"/><line x1="8" y1="12" x2="16" y2="12"/></svg>
+                    New / Unread
+                    <span class="badge-count" id="unreadCount">0</span>
+                </a>
+                <a href="#" class="sidebar-nav-item" data-view="contacted" id="nav-contacted">
+                    <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M22 16.92v3a2 2 0 0 1-2.18 2 19.79 19.79 0 0 1-8.63-3.07 19.5 19.5 0 0 1-6-6 19.79 19.79 0 0 1-3.07-8.67A2 2 0 0 1 4.11 2h3a2 2 0 0 1 2 1.72 12.84 12.84 0 0 0 .7 2.81 2 2 0 0 1-.45 2.11L8.09 9.91a16 16 0 0 0 6 6"/></svg>
+                    Contacted
+                    <span class="badge-count" id="contactedCount">0</span>
+                </a>
+                <a href="#" class="sidebar-nav-item" data-view="completed" id="nav-completed">
+                    <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M22 11.08V12a10 10 0 1 1-5.93-9.14"/><polyline points="22 4 12 14.01 9 11.01"/></svg>
+                    Completed
+                    <span class="badge-count" id="completedCount">0</span>
+                </a>
+
+                <div style="height:1px;background:var(--border-color);margin:16px 12px;"></div>
+
+                <a href="#" class="sidebar-nav-item" id="nav-add-enquiry" data-view="add">
+                    <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><rect x="3" y="3" width="18" height="18" rx="2"/><line x1="12" y1="8" x2="12" y2="16"/><line x1="8" y1="12" x2="16" y2="12"/></svg>
+                    Add Enquiry
+                </a>
+                <a href="#" class="sidebar-nav-item" id="nav-settings" data-view="settings">
+                    <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><circle cx="12" cy="12" r="3"/><path d="M19.4 15a1.65 1.65 0 0 0 .33 1.82l.06.06a2 2 0 0 1 0 2.83 2 2 0 0 1-2.83 0l-.06-.06a1.65 1.65 0 0 0-1.82-.33 1.65 1.65 0 0 0-1 1.51V21a2 2 0 0 1-2 2 2 2 0 0 1-2-2v-.09A1.65 1.65 0 0 0 9 19.4a1.65 1.65 0 0 0-1.82.33l-.06.06a2 2 0 0 1-2.83 0 2 2 0 0 1 0-2.83l.06-.06A1.65 1.65 0 0 0 4.68 15a1.65 1.65 0 0 0-1.51-1H3a2 2 0 0 1-2-2 2 2 0 0 1 2-2h.09A1.65 1.65 0 0 0 4.6 9a1.65 1.65 0 0 0-.33-1.82l-.06-.06a2 2 0 0 1 0-2.83 2 2 0 0 1 2.83 0l.06.06A1.65 1.65 0 0 0 9 4.68a1.65 1.65 0 0 0 1-1.51V3a2 2 0 0 1 2-2 2 2 0 0 1 2 2v.09a1.65 1.65 0 0 0 1 1.51 1.65 1.65 0 0 0 1.82-.33l.06-.06a2 2 0 0 1 2.83 0 2 2 0 0 1 0 2.83l-.06.06a1.65 1.65 0 0 0-.33 1.82V9a1.65 1.65 0 0 0 1.51 1H21a2 2 0 0 1 2 2 2 2 0 0 1-2 2h-.09a1.65 1.65 0 0 0-1.51 1z"/></svg>
+                    Settings
+                </a>
+            </nav>
+
+            <div class="sidebar-footer">
+                <a href="#" class="sidebar-back" id="logoutBtn" style="color:var(--accent-red);">
+                    <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round"><path d="M9 21H5a2 2 0 0 1-2-2V5a2 2 0 0 1 2-2h4"/><polyline points="16 17 21 12 16 7"/><line x1="21" y1="12" x2="9" y2="12"/></svg>
+                    Sign Out
+                </a>
+                <a href="index.html" class="sidebar-back">
+                    <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round"><path d="M19 12H5M12 19l-7-7 7-7"/></svg>
+                    Back to Website
+                </a>
+            </div>
+        </aside>
+
+        <!-- Main Content -->
+        <main class="admin-main">
+            <!-- Header -->
+            <div class="admin-header">
+                <div class="admin-title">
+                    <h1 id="pageTitle">📊 Dashboard</h1>
+                    <p id="dashboardSubtitle">Overview of customer enquiries and activity</p>
+                </div>
+                <div class="header-actions">
+                    <div class="admin-search">
+                        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><circle cx="11" cy="11" r="8"/><line x1="21" y1="21" x2="16.65" y2="16.65"/></svg>
+                        <input type="text" id="searchInput" placeholder="Search enquiries...">
+                    </div>
+                    <button class="btn btn-primary btn-sm" id="addEnquiryBtn" title="Add New Enquiry">
+                        <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round"><line x1="12" y1="5" x2="12" y2="19"/><line x1="5" y1="12" x2="19" y2="12"/></svg>
+                        Add New
+                    </button>
+                    <button class="btn btn-primary btn-sm btn-export" id="exportBtn">
+                        <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round"><path d="M21 15v4a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2v-4"/><polyline points="7 10 12 15 17 10"/><line x1="12" y1="15" x2="12" y2="3"/></svg>
+                        Export CSV
+                    </button>
+                    <button class="btn-danger btn-sm" id="clearAllBtn">Clear All</button>
+                </div>
+            </div>
+
+            <!-- Stats Grid -->
+            <div class="stats-grid" id="statsGrid">
+                <div class="stat-card">
+                    <div class="stat-card-header">
+                        <div class="stat-card-icon">
+                            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M4 4h16c1.1 0 2 .9 2 2v12c0 1.1-.9 2-2 2H4c-1.1 0-2-.9-2-2V6c0-1.1.9-2 2-2z"/><polyline points="22,6 12,13 2,6"/></svg>
+                        </div>
+                        <span class="stat-card-trend up" id="totalTrend">+0</span>
+                    </div>
+                    <div class="stat-card-value" id="totalEnquiries">0</div>
+                    <div class="stat-card-label">Total Enquiries</div>
+                </div>
+                <div class="stat-card">
+                    <div class="stat-card-header">
+                        <div class="stat-card-icon" style="color: var(--accent-green);">
+                            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><circle cx="12" cy="12" r="10"/><line x1="12" y1="8" x2="12" y2="16"/><line x1="8" y1="12" x2="16" y2="12"/></svg>
+                        </div>
+                        <span class="stat-card-trend up" id="newTrend">+0</span>
+                    </div>
+                    <div class="stat-card-value" id="newEnquiries">0</div>
+                    <div class="stat-card-label">New Enquiries</div>
+                </div>
+                <div class="stat-card">
+                    <div class="stat-card-header">
+                        <div class="stat-card-icon" style="color: var(--accent-blue);">
+                            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M22 16.92v3a2 2 0 0 1-2.18 2 19.79 19.79 0 0 1-8.63-3.07 19.5 19.5 0 0 1-6-6 19.79 19.79 0 0 1-3.07-8.67A2 2 0 0 1 4.11 2h3a2 2 0 0 1 2 1.72"/></svg>
+                        </div>
+                        <span class="stat-card-trend neutral" id="contactedTrend">0</span>
+                    </div>
+                    <div class="stat-card-value" id="contactedEnquiries">0</div>
+                    <div class="stat-card-label">Contacted</div>
+                </div>
+                <div class="stat-card">
+                    <div class="stat-card-header">
+                        <div class="stat-card-icon" style="color: var(--accent-purple);">
+                            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M22 11.08V12a10 10 0 1 1-5.93-9.14"/><polyline points="22 4 12 14.01 9 11.01"/></svg>
+                        </div>
+                        <span class="stat-card-trend up" id="completedTrend">0</span>
+                    </div>
+                    <div class="stat-card-value" id="completedEnquiries">0</div>
+                    <div class="stat-card-label">Completed</div>
+                </div>
+            </div>
+
+            <!-- Bulk Actions Bar -->
+            <div class="bulk-actions-bar" id="bulkActionsBar" style="display:none;">
+                <span class="bulk-count"><span id="selectedCount">0</span> selected</span>
+                <button class="btn btn-sm btn-outline" id="bulkStatusBtn">Change Status</button>
+                <button class="btn btn-sm btn-outline" id="bulkMarkReadBtn">Mark as Read</button>
+                <button class="btn-danger btn-sm" id="bulkDeleteBtn">Delete Selected</button>
+                <button class="btn btn-sm btn-outline" id="bulkDeselectBtn" style="margin-left:auto;">Deselect All</button>
+            </div>
+
+            <!-- Filters -->
+            <div class="filters-bar" id="filtersBar">
+                <select class="filter-select" id="filterStatus">
+                    <option value="all">All Status</option>
+                    <option value="new">New</option>
+                    <option value="contacted">Contacted</option>
+                    <option value="completed">Completed</option>
+                    <option value="cancelled">Cancelled</option>
+                </select>
+                <select class="filter-select" id="filterService">
+                    <option value="all">All Services</option>
+                    <option value="CCTV Installation">CCTV Installation</option>
+                    <option value="24/7 Monitoring">24/7 Monitoring</option>
+                    <option value="Maintenance & AMC">Maintenance & AMC</option>
+                    <option value="Access Control">Access Control</option>
+                    <option value="Network Solutions">Network Solutions</option>
+                    <option value="Security Consultation">Security Consultation</option>
+                    <option value="Other">Other</option>
+                </select>
+                <select class="filter-select" id="filterSort">
+                    <option value="newest">Newest First</option>
+                    <option value="oldest">Oldest First</option>
+                    <option value="name">Name (A-Z)</option>
+                    <option value="priority">Priority (Unread First)</option>
+                </select>
+                <span class="results-count" id="resultsCount">0 enquiries</span>
+            </div>
+
+            <!-- Enquiry Table -->
+            <div class="table-wrapper" id="tableSection">
+                <table class="enquiry-table" id="enquiryTable">
+                    <thead>
+                        <tr>
+                            <th><input type="checkbox" id="selectAllCheckbox" title="Select All"></th>
+                            <th>ID</th>
+                            <th>Customer</th>
+                            <th>Phone</th>
+                            <th>Service</th>
+                            <th>Property</th>
+                            <th>Date</th>
+                            <th>Status</th>
+                            <th>Actions</th>
+                        </tr>
+                    </thead>
+                    <tbody id="enquiryTableBody">
+                        <!-- Dynamic rows inserted here -->
+                    </tbody>
+                </table>
+
+                <!-- Empty State -->
+                <div class="empty-state" id="emptyState" style="display:none;">
+                    <div class="empty-icon">
+                        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5">
+                            <path d="M4 4h16c1.1 0 2 .9 2 2v12c0 1.1-.9 2-2 2H4c-1.1 0-2-.9-2-2V6c0-1.1.9-2 2-2z"/>
+                            <polyline points="22,6 12,13 2,6"/>
+                        </svg>
+                    </div>
+                    <h3>No Enquiries Yet</h3>
+                    <p>Customer enquiries from the website will appear here.<br>You can also manually add enquiries using the "Add New" button.</p>
+                </div>
+            </div>
+
+            <!-- Settings Section (hidden by default) -->
+            <div class="settings-section" id="settingsSection" style="display:none;">
+                <div class="settings-card">
+                    <h3>⚙️ Admin Settings</h3>
+                    <div class="settings-group">
+                        <label>Auto-Refresh Interval</label>
+                        <select id="settingRefresh" class="filter-select">
+                            <option value="5000">5 seconds</option>
+                            <option value="10000" selected>10 seconds</option>
+                            <option value="30000">30 seconds</option>
+                            <option value="60000">1 minute</option>
+                            <option value="0">Disabled</option>
+                        </select>
+                    </div>
+                    <div class="settings-group">
+                        <label>Default Sort</label>
+                        <select id="settingSort" class="filter-select">
+                            <option value="newest" selected>Newest First</option>
+                            <option value="oldest">Oldest First</option>
+                            <option value="name">Name (A-Z)</option>
+                        </select>
+                    </div>
+                    <div class="settings-group">
+                        <label>Company Name</label>
+                        <input type="text" id="settingCompany" value="CrownStone Security" class="settings-input">
+                    </div>
+                    <div class="settings-group">
+                        <label>Admin Email</label>
+                        <input type="email" id="settingEmail" value="admin@CrownStoneSecurity.com" class="settings-input">
+                    </div>
+
+                    <div style="height:1px;background:var(--border-color);margin:24px 0;"></div>
+                    <h4 style="font-family:'Outfit',sans-serif;font-size:1rem;font-weight:600;margin-bottom:16px;color:var(--text-secondary);">📍 Contact Information (Website)</h4>
+                    <p style="font-size:0.82rem;color:var(--text-muted);margin-bottom:16px;">These details will be displayed on the main website's contact section and footer.</p>
+
+                    <div class="settings-group">
+                        <label>Primary Phone Number</label>
+                        <input type="tel" id="settingPhone" value="+91 98765 43210" class="settings-input" placeholder="+91 98765 43210">
+                    </div>
+                    <div class="settings-group">
+                        <label>Secondary Phone Number (Optional)</label>
+                        <input type="tel" id="settingPhone2" value="" class="settings-input" placeholder="+91 98765 43211">
+                    </div>
+                    <div class="settings-group">
+                        <label>Contact Email (Displayed on Website)</label>
+                        <input type="email" id="settingContactEmail" value="info@CrownStoneSecurity.com" class="settings-input" placeholder="info@CrownStoneSecurity.com">
+                    </div>
+                    <div class="settings-group">
+                        <label>Company Address - Line 1</label>
+                        <input type="text" id="settingAddress1" value="42 Security Tower, Tech Park Road" class="settings-input" placeholder="Street address, building name">
+                    </div>
+                    <div class="settings-group">
+                        <label>Company Address - Line 2</label>
+                        <input type="text" id="settingAddress2" value="Bangalore, Karnataka 560001" class="settings-input" placeholder="City, State, PIN">
+                    </div>
+
+                    <button class="btn btn-primary btn-sm" id="saveSettingsBtn" style="margin-top:16px;">
+                        <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M19 21H5a2 2 0 0 1-2-2V5a2 2 0 0 1 2-2h11l5 5v11a2 2 0 0 1-2 2z"/><polyline points="17 21 17 13 7 13 7 21"/><polyline points="7 3 7 8 15 8"/></svg>
+                        Save Settings
+                    </button>
+                </div>
+            </div>
+        </main>
+    </div>
+
+    <!-- View / Edit Enquiry Detail Modal -->
+    <div class="modal-overlay" id="detailModal">
+        <div class="modal modal-lg">
+            <div class="modal-header">
+                <div class="modal-header-left">
+                    <h2 id="modalTitle">Enquiry Details</h2>
+                    <div class="modal-tabs">
+                        <button class="modal-tab active" data-tab="view" id="tabView">View</button>
+                        <button class="modal-tab" data-tab="edit" id="tabEdit">Edit</button>
+                        <button class="modal-tab" data-tab="notes" id="tabNotes">Notes <span class="tab-badge" id="notesBadge">0</span></button>
+                    </div>
+                </div>
+                <button class="modal-close" id="modalClose" aria-label="Close modal">
+                    <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round"><line x1="18" y1="6" x2="6" y2="18"/><line x1="6" y1="6" x2="18" y2="18"/></svg>
+                </button>
+            </div>
+
+            <!-- VIEW TAB -->
+            <div class="modal-body tab-content active" id="tabContentView">
+                <div id="modalBody">
+                    <!-- Dynamic view content -->
+                </div>
+            </div>
+
+            <!-- EDIT TAB -->
+            <div class="modal-body tab-content" id="tabContentEdit">
+                <form id="editForm" class="edit-form">
+                    <div class="edit-form-row">
+                        <div class="edit-form-group">
+                            <label for="editFullName">Full Name *</label>
+                            <input type="text" id="editFullName" required>
+                        </div>
+                        <div class="edit-form-group">
+                            <label for="editPhone">Phone Number *</label>
+                            <input type="tel" id="editPhone" required>
+                        </div>
+                    </div>
+                    <div class="edit-form-group">
+                        <label for="editEmail">Email Address *</label>
+                        <input type="email" id="editEmail" required>
+                    </div>
+                    <div class="edit-form-row">
+                        <div class="edit-form-group">
+                            <label for="editServiceType">Service Required *</label>
+                            <select id="editServiceType" required>
+                                <option value="CCTV Installation">CCTV Installation</option>
+                                <option value="24/7 Monitoring">24/7 Monitoring</option>
+                                <option value="Maintenance & AMC">Maintenance & AMC</option>
+                                <option value="Access Control">Access Control</option>
+                                <option value="Network Solutions">Network Solutions</option>
+                                <option value="Security Consultation">Security Consultation</option>
+                                <option value="Other">Other</option>
+                            </select>
+                        </div>
+                        <div class="edit-form-group">
+                            <label for="editPropertyType">Property Type</label>
+                            <select id="editPropertyType">
+                                <option value="Not specified">Not specified</option>
+                                <option value="Residential">Residential</option>
+                                <option value="Commercial">Commercial</option>
+                                <option value="Industrial">Industrial</option>
+                                <option value="Government">Government</option>
+                                <option value="Retail">Retail</option>
+                                <option value="Other">Other</option>
+                            </select>
+                        </div>
+                    </div>
+                    <div class="edit-form-group">
+                        <label for="editAddress">Property Address</label>
+                        <input type="text" id="editAddress">
+                    </div>
+                    <div class="edit-form-row">
+                        <div class="edit-form-group">
+                            <label for="editStatus">Status</label>
+                            <select id="editStatus">
+                                <option value="new">New</option>
+                                <option value="contacted">Contacted</option>
+                                <option value="completed">Completed</option>
+                                <option value="cancelled">Cancelled</option>
+                            </select>
+                        </div>
+                        <div class="edit-form-group">
+                            <label for="editPriority">Priority</label>
+                            <select id="editPriority">
+                                <option value="normal">Normal</option>
+                                <option value="high">High</option>
+                                <option value="urgent">Urgent</option>
+                                <option value="low">Low</option>
+                            </select>
+                        </div>
+                    </div>
+                    <div class="edit-form-group">
+                        <label for="editMessage">Message / Details</label>
+                        <textarea id="editMessage" rows="4"></textarea>
+                    </div>
+                    <div class="edit-form-actions">
+                        <button type="submit" class="btn btn-primary btn-sm" id="saveEditBtn">
+                            <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M19 21H5a2 2 0 0 1-2-2V5a2 2 0 0 1 2-2h11l5 5v11a2 2 0 0 1-2 2z"/><polyline points="17 21 17 13 7 13 7 21"/><polyline points="7 3 7 8 15 8"/></svg>
+                            Save Changes
+                        </button>
+                        <button type="button" class="btn btn-outline btn-sm" id="cancelEditBtn">Cancel</button>
+                    </div>
+                </form>
+            </div>
+
+            <!-- NOTES TAB -->
+            <div class="modal-body tab-content" id="tabContentNotes">
+                <div class="notes-section">
+                    <div class="notes-list" id="notesList">
+                        <!-- Dynamic notes -->
+                    </div>
+                    <div class="add-note-form">
+                        <textarea id="newNoteText" placeholder="Add an internal note..." rows="3"></textarea>
+                        <button class="btn btn-primary btn-sm" id="addNoteBtn">
+                            <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><line x1="12" y1="5" x2="12" y2="19"/><line x1="5" y1="12" x2="19" y2="12"/></svg>
+                            Add Note
+                        </button>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Modal Footer -->
+            <div class="modal-footer">
+                <div class="modal-footer-left">
+                    <button class="btn btn-outline btn-sm" id="duplicateBtn" title="Duplicate Enquiry">
+                        <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><rect x="9" y="9" width="13" height="13" rx="2"/><path d="M5 15H4a2 2 0 0 1-2-2V4a2 2 0 0 1 2-2h9a2 2 0 0 1 2 2v1"/></svg>
+                        Duplicate
+                    </button>
+                    <button class="btn btn-outline btn-sm" id="printBtn" title="Print Enquiry">
+                        <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><polyline points="6 9 6 2 18 2 18 9"/><path d="M6 18H4a2 2 0 0 1-2-2v-5a2 2 0 0 1 2-2h16a2 2 0 0 1 2 2v5a2 2 0 0 1-2 2h-2"/><rect x="6" y="14" width="12" height="8"/></svg>
+                        Print
+                    </button>
+                    <button class="btn-danger btn-sm" id="deleteFromModalBtn" title="Delete Enquiry">
+                        <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><polyline points="3 6 5 6 21 6"/><path d="M19 6v14a2 2 0 0 1-2 2H7a2 2 0 0 1-2-2V6m3 0V4a2 2 0 0 1 2-2h4a2 2 0 0 1 2 2v2"/></svg>
+                        Delete
+                    </button>
+                </div>
+                <div class="modal-footer-right">
+                    <select id="modalStatusSelect">
+                        <option value="new">New</option>
+                        <option value="contacted">Contacted</option>
+                        <option value="completed">Completed</option>
+                        <option value="cancelled">Cancelled</option>
+                    </select>
+                    <button class="btn btn-primary btn-sm" id="updateStatusBtn">Update Status</button>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <!-- Add / Create New Enquiry Modal -->
+    <div class="modal-overlay" id="addModal">
+        <div class="modal modal-lg">
+            <div class="modal-header">
+                <h2>➕ Add New Enquiry</h2>
+                <button class="modal-close" id="addModalClose" aria-label="Close modal">
+                    <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round"><line x1="18" y1="6" x2="6" y2="18"/><line x1="6" y1="6" x2="18" y2="18"/></svg>
+                </button>
+            </div>
+            <div class="modal-body">
+                <form id="addEnquiryForm" class="edit-form">
+                    <div class="edit-form-row">
+                        <div class="edit-form-group">
+                            <label for="addFullName">Full Name *</label>
+                            <input type="text" id="addFullName" placeholder="Customer full name" required>
+                        </div>
+                        <div class="edit-form-group">
+                            <label for="addPhone">Phone Number *</label>
+                            <input type="tel" id="addPhone" placeholder="+91 98765 43210" required>
+                        </div>
+                    </div>
+                    <div class="edit-form-group">
+                        <label for="addEmail">Email Address *</label>
+                        <input type="email" id="addEmail" placeholder="customer@email.com" required>
+                    </div>
+                    <div class="edit-form-row">
+                        <div class="edit-form-group">
+                            <label for="addServiceType">Service Required *</label>
+                            <select id="addServiceType" required>
+                                <option value="" disabled selected>Select a service</option>
+                                <option value="CCTV Installation">CCTV Installation</option>
+                                <option value="24/7 Monitoring">24/7 Monitoring</option>
+                                <option value="Maintenance & AMC">Maintenance & AMC</option>
+                                <option value="Access Control">Access Control</option>
+                                <option value="Network Solutions">Network Solutions</option>
+                                <option value="Security Consultation">Security Consultation</option>
+                                <option value="Other">Other</option>
+                            </select>
+                        </div>
+                        <div class="edit-form-group">
+                            <label for="addPropertyType">Property Type</label>
+                            <select id="addPropertyType">
+                                <option value="Not specified" selected>Select type</option>
+                                <option value="Residential">Residential</option>
+                                <option value="Commercial">Commercial</option>
+                                <option value="Industrial">Industrial</option>
+                                <option value="Government">Government</option>
+                                <option value="Retail">Retail</option>
+                                <option value="Other">Other</option>
+                            </select>
+                        </div>
+                    </div>
+                    <div class="edit-form-group">
+                        <label for="addAddress">Property Address</label>
+                        <input type="text" id="addAddress" placeholder="123 Main Street, City">
+                    </div>
+                    <div class="edit-form-row">
+                        <div class="edit-form-group">
+                            <label for="addStatus">Status</label>
+                            <select id="addStatus">
+                                <option value="new" selected>New</option>
+                                <option value="contacted">Contacted</option>
+                                <option value="completed">Completed</option>
+                            </select>
+                        </div>
+                        <div class="edit-form-group">
+                            <label for="addPriority">Priority</label>
+                            <select id="addPriority">
+                                <option value="normal" selected>Normal</option>
+                                <option value="high">High</option>
+                                <option value="urgent">Urgent</option>
+                                <option value="low">Low</option>
+                            </select>
+                        </div>
+                    </div>
+                    <div class="edit-form-group">
+                        <label for="addMessage">Message / Details</label>
+                        <textarea id="addMessage" rows="4" placeholder="Customer's requirements, notes, etc."></textarea>
+                    </div>
+                    <div class="edit-form-actions">
+                        <button type="submit" class="btn btn-primary btn-sm">
+                            <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><line x1="12" y1="5" x2="12" y2="19"/><line x1="5" y1="12" x2="19" y2="12"/></svg>
+                            Create Enquiry
+                        </button>
+                        <button type="button" class="btn btn-outline btn-sm" id="cancelAddBtn">Cancel</button>
+                    </div>
+                </form>
+            </div>
+        </div>
+    </div>
+
+    <!-- Bulk Status Change Modal -->
+    <div class="modal-overlay" id="bulkStatusModal">
+        <div class="modal" style="max-width:400px;">
+            <div class="modal-header">
+                <h2>Change Status</h2>
+                <button class="modal-close" id="bulkStatusClose" aria-label="Close">
+                    <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round"><line x1="18" y1="6" x2="6" y2="18"/><line x1="6" y1="6" x2="18" y2="18"/></svg>
+                </button>
+            </div>
+            <div class="modal-body">
+                <p style="margin-bottom:16px;color:var(--text-secondary);">Change status of <strong id="bulkStatusCount">0</strong> selected enquiries:</p>
+                <select id="bulkStatusSelect" class="filter-select" style="width:100%;padding:12px;">
+                    <option value="new">New</option>
+                    <option value="contacted">Contacted</option>
+                    <option value="completed">Completed</option>
+                    <option value="cancelled">Cancelled</option>
+                </select>
+            </div>
+            <div class="modal-footer" style="justify-content:flex-end;">
+                <button class="btn btn-primary btn-sm" id="bulkStatusApplyBtn">Apply</button>
+            </div>
+        </div>
+    </div>
+
+    <script src="admin.js"></script>
+</body>
+</html>
